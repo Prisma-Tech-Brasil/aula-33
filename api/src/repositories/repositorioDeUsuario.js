@@ -4,7 +4,11 @@ const usuarios = [
   { id: 3, nome: "Carol" }
 ];
 
-exports.encontrarTodosUsuarios = async () => {
-  // Aqui você pode fazer a consulta real ao banco de dados
-  return usuarios;
-};
+class RepositorioDeUsuario {
+  encontrarTodosUsuarios = async () => {
+    // Aqui você pode fazer a consulta real ao banco de dados
+    return usuarios;
+  };
+}
+
+module.exports = new RepositorioDeUsuario();

@@ -1,5 +1,9 @@
 const repositorioDeUsuario = require("../repositories/repositorioDeUsuario");
 
-exports.obterTodosUsuarios = async () => {
-  return await repositorioDeUsuario.encontrarTodosUsuarios();
-};
+class ServicosDeUsuario {
+  obterTodosUsuarios = async () => {
+    return await repositorioDeUsuario.encontrarTodosUsuarios();
+  };
+}
+
+module.exports = new ServicosDeUsuario();
