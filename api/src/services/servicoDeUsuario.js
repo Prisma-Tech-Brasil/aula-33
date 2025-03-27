@@ -1,18 +1,19 @@
-const repositorioDeUsuario = require("../repositories/repositorioDeUsuario");
+const RepositorioDeUsuario = require("../repositories/repositorioDeUsuario");
 const Usuario = require("../models/Usuario");
 
-exports.obterTodosUsuarios = async () => {
-  return await repositorioDeUsuario.encontrarTodosUsuarios();
-};
+class ServicoDeUsuario {
+  async obterTodosUsuarios() {
+    return await RepositorioDeUsuario.encontrarTodosUsuarios();
+  }
 
-exports.adicionarUsuario = async (dadosUsuario) => {
-  // Instancia a classe Usuario
-  const novoUsuario = new Usuario(
-    dadosUsuario.nome,
-    dadosUsuario.cpf,
-    dadosUsuario.email
-  );
+  async adicionarUsuario(dadosUsuario) {
+    const novoUsuario = new Usuario(
+      dadosUsuario.nome,
+      dadosUsuario.cpf,
+      dadosUsuario.email
+    );
+    return await RepositorioDeUsuario.adicionarUsuario(novoUsuario);
+  }
+}
 
-  // Passa o novo usuário para o repositório
-  return await repositorioDeUsuario.adicionarUsuario(novoUsuario);
-};
+module.exports = new ServicoDeUsuario();

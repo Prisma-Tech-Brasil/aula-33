@@ -1,14 +1,20 @@
-const usuarios = [
-  { id: 1, nome: "Alice" },
-  { id: 2, nome: "Bob" },
-  { id: 3, nome: "Carol" }
-];
+class RepositorioDeUsuario {
+  constructor() {
+    this.usuarios = [
+      { id: 1, nome: "Alice" },
+      { id: 2, nome: "Bob" },
+      { id: 3, nome: "Carol" }
+    ];
+  }
 
-exports.encontrarTodosUsuarios = async () => {
-  return usuarios;
-};
+  async encontrarTodosUsuarios() {
+    return this.usuarios;
+  }
 
-exports.adicionarUsuario = async (usuario) => {
-  usuarios.push(usuario);
-  return usuario;
+  async adicionarUsuario(usuario) {
+    this.usuarios.push(usuario);
+    return usuario;
+  }
 }
+
+module.exports = new RepositorioDeUsuario();
