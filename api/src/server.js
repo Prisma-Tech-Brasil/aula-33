@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const rotaDeUsuarios = require("./src/routes/rotasDeUsuario");
+const rotaDeUsuarios = require("./routes/rotasDeUsuario");
 
 app.use(express.json());
 app.use("/usuarios", rotaDeUsuarios);
