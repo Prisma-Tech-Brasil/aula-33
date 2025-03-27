@@ -12,6 +12,11 @@ class ControladorDeUsuario {
 
   async adicionarUsuario(req, res) {
     const usuario = req.body;
+
+    if (!usuario.nome || !usuario.email || !usuario.cpf) {
+      return res.status(400).send("Todos os campos (nome, email, cpf) são obrigatórios.");
+    }
+
     try {
       const novoUsuario = await ServicoDeUsuario.adicionarUsuario(usuario);
       res.status(201).json(novoUsuario);
